@@ -14,12 +14,11 @@ const styles = {
     self: {
         display: 'flex',
         flexWrap: 'wrap',
-        justifyContent: 'space-around'
+        justifyContent: 'space-around',
     },
 };
 
 class ProjectListPage extends PureComponent {
-
     static propTypes = {
         classes: PropTypes.shape({}).isRequired,
         history: PropTypes.shape({
@@ -38,31 +37,32 @@ class ProjectListPage extends PureComponent {
         readProjectList().finally(() => {
             this.setState({ loading: false });
         });
-    };
+    }
 
     handleEditPost = (projecId) => {
         const { history } = this.props;
         history.push(urls.editProject(projecId));
     };
 
-    render(){
+    render() {
         const { classes, projects } = this.props;
         const { loading } = this.state;
-        if (loading){
-            return <Loader/>
-        } else {
-            return(
-                <div className="classes.self">
-                    {projects.map((project) => (
-                        <ProjectListItem
-                            key={project.id}
-                            project={project}
-                            onEdit={this.handleEditPost}
-                        />
-                    ))}
-                </div>
-            )
+        if (loading) {
+            return (
+                <Loader />
+            );
         }
+        return (
+            <div className={classes.self}>
+                {projects.map((project) => (
+                    <ProjectListItem
+                        key={project.id}
+                        project={project}
+                        onEdit={this.handleEditPost}
+                    />
+                ))}
+            </div>
+        );
     }
 }
 

@@ -1,25 +1,34 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
-import { withStyles } from '@material-ui/core';
-
-const styles = {
-    self: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'space-around'
-    },
-};
-
-class CreditsPage extends PureComponent {
-    render(){
-        return(
+export default class CreditsPage extends PureComponent {
+    render() {
+        return (
             <div>
-                CreditsPage
+                Credits page
+                <div>Icons made by <a
+                    href="https://www.flaticon.com/authors/pongsakornred"
+                    title="pongsakornRed"
+                >
+                    pongsakornRed
+                </a>
+                    from
+                    <a
+                        href="https://www.flaticon.com/"
+                        title="Flaticon"
+                    >
+                        www.flaticon.com
+                    </a>
+                    is licensed by
+                    <a
+                        href="http://creativecommons.org/licenses/by/3.0/"
+                        title="Creative Commons BY 3.0"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        CC 3.0 BY
+                    </a>
+                </div>
             </div>
-        )
+        );
     }
 }
-
-export default withStyles(styles)(CreditsPage);
