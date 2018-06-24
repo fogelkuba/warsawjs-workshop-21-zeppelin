@@ -7,7 +7,7 @@ import { arrayOfProjects } from '../propTypes';
 import * as urls from '../urls';
 import * as actions from '../actions';
 import * as selectors from '../selectors';
-// import Loader from ../components/Loader;
+import Loader from '../components/Loader';
 import ProjectListItem from '../components/ProjectListItem';
 
 const styles = {
@@ -33,20 +33,47 @@ class ProjectListPage extends PureComponent {
         loading: true,
     };
 
-    // componentDidMount() {
-    //     const { readProjectList } = this.props;
-    //     readProjectList().finally(() => {
-    //         this.setState({ loading: false });
-    //     });
-    // }
+    componentDidMount() {
+        const { readProjectList } = this.props;
+        readProjectList().finally(() => {
+            this.setState({ loading: false });
+        });
+    };
+
+    handleEditPost = (projecId) => {
+        const { history } = this.props;
+        history.push(urls.editProject(projecId));
+    };
 
     render(){
-        return(
-            <div>
-                ProjectListPage
-            </div>
-        )
+        const { classes, projects } = this.props;
+        const { loading } = this.state;
+        if (loading){
+            return <Loader/>
+        } else {
+            return(
+                <div className="classes.self">
+                    {projects.map((project) => (
+                        <ProjectListItem
+                            key={project.id}
+                            project={project}
+                            onEdit={this.handleEditPost}
+                        />
+                    ))}
+                </div>
+            )
+        }
     }
 }
 
-export default withStyles(styles)(ProjectListPage);
+function mapStateToProps(state, props) {
+    return {
+        projects: selectors.getProjectList(state),
+    };
+}
+
+const mapDispatchToProps = {
+    readProjectList: actions.readProjectList,
+};
+
+export default withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(ProjectListPage));

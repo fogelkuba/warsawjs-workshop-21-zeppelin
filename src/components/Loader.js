@@ -27,12 +27,12 @@ class Loader extends PureComponent {
 
     render(){
         return(
-            <div className={classes.self}>
-                <CircularProgress className={classes.spinner}/>
+            <div className={styles.self}>
+                <CircularProgress className={styles.spinner}/>
                 <Typography variant="title" color="inherit"> Loading </Typography>
             </div>
         )
     }
 }
 
-export default withStyles(styles) Loader;
+export default withStyles(styles) (Loader);
