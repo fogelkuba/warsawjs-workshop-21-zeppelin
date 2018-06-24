@@ -4,5 +4,9 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
+import * as api from './api';
+
+window.zeplin = api;
+
 ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
