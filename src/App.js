@@ -1,19 +1,23 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import PropTypes from 'prop-types';
+import { BrowserRouter, Route }   from 'react-router-dom';
+import { createStore} from 'react-redux';
+import {withStyles, CssBaseline} from '@material-ui/core';
+import { LoginPage } from './containers/LoginPage';
+import * as urls from 'urls';
+
 import './App.css';
+
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+        <CssBaseline>
+            <BrowserRouter>
+                <Route path={urls.LOGIN} exact component={LoginPage}/>
+                <Route path={urls.LOGIN} exact component/>
+            </BrowserRouter>
+        </CssBaseline>
     );
   }
 }
