@@ -1,10 +1,16 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core';
+
+import { arrayofProjects } from '../propTypes';
 
 const styles = {
     self: {
-
-    }
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'space-around'
+    },
 };
 
 class CreditsPage extends PureComponent {
