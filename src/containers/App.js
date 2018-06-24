@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import reduxThunk from 'redux-thunk';
@@ -11,7 +11,7 @@ import * as urls from '../urls';
 import LoginPage from './LoginPage';
 import Layout from './Layout';
 
-const composeEnhancers = global.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+// const composeEnhancers = global.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 // const store = createStore(reducer, composeEnhancers(applyMiddleware(reduxThunk)));
 
@@ -34,12 +34,14 @@ class App extends Component {
     render() {
         // const { classes } = this.props;
         return (
-            // <Provider store={store}>*
+            // <Provider store={store}>
                 <BrowserRouter>
                     <CssBaseline>
                         <div style={styles.self}>
-                            <Route path={urls.ROOT} component={Layout} />
-                            <Route path={urls.LOGIN} exact component={LoginPage} />
+                            <Switch>
+                                <Route path={urls.LOGIN} exact component={LoginPage} />
+                                <Route path={urls.ROOT} component={Layout} />
+                            </Switch>
                         </div>
                     </CssBaseline>
                 </BrowserRouter>

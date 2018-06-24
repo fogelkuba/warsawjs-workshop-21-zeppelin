@@ -8,10 +8,10 @@ import * as urls from '../urls';
 // import * as actions from '../actions';
 // import * as selectors from '../selectors';
 import Header from '../components/Header';
-// import ProjectCreatePage from './ProjectCreatePage';
-// import ProjectEditPage from './ProjectEditPage';
-// import ProjectListPage from './ProjectListPage';
-// import CreditsPage from './CreditsPage';
+import ProjectCreatePage from './ProjectCreatePage';
+import ProjectEditPage from './ProjectEditPage';
+import ProjectListPage from './ProjectListPage';
+import CreditsPage from './CreditsPage';
 
 const styles = {
     content: {
@@ -45,10 +45,10 @@ class Layout extends Component {
                 {/*<div className={classes.content}>*/}
                 <div>
                     <Switch>
-                        {/*<Route path={urls.PROJECT_CREATE} component={ProjectCreatePage} />*/}
-                        {/*<Route path={urls.PROJECT_EDIT} component={ProjectEditPage} />*/}
-                        {/*<Route path={urls.PROJECT_LIST} component={ProjectListPage} />*/}
-                        {/*<Route path={urls.CREDITS} component={CreditsPage} />*/}
+                        <Route path={urls.PROJECT_CREATE} component={ProjectCreatePage} />
+                        <Route path={urls.PROJECT_EDIT} component={ProjectEditPage} />
+                        <Route path={urls.PROJECT_LIST} component={ProjectListPage} />
+                        <Route path={urls.CREDITS} component={CreditsPage} />
                     </Switch>
                 </div>
             </Fragment>

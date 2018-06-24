@@ -10,11 +10,14 @@ const styles = {
     self: {
         display: 'flex',
         flexDirection: 'column',
-        maxWidth: 300
+        maxWidth: 300,
+        minHeight: '50vh',
+        alignItems: 'center',
+        justifyContent: 'center'
     }
 };
 
-export class LoginPage extends PureComponent {
+class LoginPage extends PureComponent {
 
     state = {
         submitting: false,
@@ -22,13 +25,31 @@ export class LoginPage extends PureComponent {
         password: '',
     };
 
+    handleSubmit = () => {
+        console.log(this.username);
+        console.log(this.password);
+    };
+
+    handleChangeUsername = (event) => {
+        this.setState({
+            username: event.target.value
+        });
+        console.log(event);
+    };
+
+    handleChangePassword = (event) => {
+        this.setState({
+            password: event.target.value
+        });
+        console.log(event);
+    };
+
     render() {
-        // const { classes } = this.props;
+        const { classes } = this.props;
         const { username, password } = this.state;
         return (
             <form>
-                {/*<div className={classes.self}>*/}
-                <div>
+                <div className={classes.self}>
                     <TextField
                         label="Username"
                         name="username"
@@ -41,7 +62,7 @@ export class LoginPage extends PureComponent {
                         value={password}
                         onChange={this.handleChangePassword}
                     />
-                    {/*<Button variant="raised" onClick={this.handleSubmit}>Login</Button>*/}
+                    <Button variant="raised" onClick={this.handleSubmit}>Login</Button>
                 </div>
             </form>
         );
@@ -49,4 +70,4 @@ export class LoginPage extends PureComponent {
 
 }
 
-export default LoginPage;
+export default withStyles(styles)(LoginPage);
