@@ -20,7 +20,7 @@ const DEFAULT_AUTH_STATE = {
 function auth(state, action){
     switch (action.type) {
         case actionTypes.LOGIN_START:
-            return ( ...state, username: null, isPending: true);
+            return {...state, username: null, isPending: true};
         case actionTypes.LOGIN_END:
             return action.error
                 ? { ...state, username: null, isPending: false }
@@ -31,3 +31,8 @@ function auth(state, action){
             return state || DEFAULT_AUTH_STATE;
     }
 }
+
+export default combineReducers({
+    auth,
+    // projects,
+});

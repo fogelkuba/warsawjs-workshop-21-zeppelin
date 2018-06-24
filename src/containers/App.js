@@ -45,7 +45,7 @@ class App extends Component {
                         </div>
                     </CssBaseline>
                 </BrowserRouter>
-            // </Provider>
+            </Provider>
         );
     }
 }

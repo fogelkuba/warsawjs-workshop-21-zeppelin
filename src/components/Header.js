@@ -43,6 +43,10 @@ class Header extends PureComponent {
     handleCloseDrawer = () => {
         this.setState({ isDrawerOpen: false });
     };
+    handleClickLogout = () => {
+        const { logout } = this.props;
+        logout();
+    };
 
     render(){
         const { classes } = this.props;
@@ -63,8 +67,7 @@ class Header extends PureComponent {
                         Zeppelin - Warsaw JS Workshop #21
                     </Typography>
                     <div>
-                        <Button color="inherit">Logout</Button>
-                        {/*<Button color="inherit" onClick={this.handleClickLogout}>Logout</Button>*/}
+                        <Button color="inherit" onClick={this.handleClickLogout}>Logout</Button>
                     </div>
                 </Toolbar>
                 <Drawer open={isDrawerOpen} onClose={this.handleCloseDrawer}>

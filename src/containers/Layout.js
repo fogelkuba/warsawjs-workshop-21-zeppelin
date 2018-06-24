@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core';
 
 import * as urls from '../urls';
-// import * as actions from '../actions';
-// import * as selectors from '../selectors';
+import * as actions from '../actions';
+import * as selectors from '../selectors';
 import Header from '../components/Header';
 import ProjectCreatePage from './ProjectCreatePage';
 import ProjectEditPage from './ProjectEditPage';
@@ -26,24 +26,22 @@ const styles = {
 
 class Layout extends Component {
     static propTypes = {
-        // isLoggedIn: PropTypes.bool.isRequired,
+        isLoggedIn: PropTypes.bool.isRequired,
         logout: PropTypes.func.isRequired,
         classes: PropTypes.shape({}).isRequired,
     };
 
     render() {
-        // const { isLoggedIn, logout, classes } = this.props;
-        // if (!isLoggedIn) {
-        //     return (
-        //         <Redirect to={urls.LOGIN} />
-        //     );
-        // }
+        const { isLoggedIn, logout, classes } = this.props;
+        if (!isLoggedIn) {
+            return (
+                <Redirect to={urls.LOGIN} />
+            );
+        }
         return (
             <Fragment>
-                {/*<Header logout={logout} />*/}
-                <Header/>
-                {/*<div className={classes.content}>*/}
-                <div>
+                <Header logout={logout} />
+                <div className={classes.content}>
                     <Switch>
                         <Route path={urls.PROJECT_CREATE} component={ProjectCreatePage} />
                         <Route path={urls.PROJECT_EDIT} component={ProjectEditPage} />
@@ -56,16 +54,14 @@ class Layout extends Component {
     }
 }
 
-// function mapStateToProps(state) {
-//     return {
-//         isLoggedIn: selectors.isLoggedIn(state),
-//     };
-// }
+function mapStateToProps(state) {
+    return {
+        isLoggedIn: selectors.isLoggedIn(state),
+    };
+}
 
-// const mapDispatchToProps = {
-//     logout: actions.logout,
-// };
+const mapDispatchToProps = {
+    logout: actions.logout,
+};
 
-// export default withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(Layout));
-
-export default Layout;
+export default withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(Layout));
