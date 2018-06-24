@@ -7,13 +7,13 @@ import reduxThunk from 'redux-thunk';
 import { withStyles, CssBaseline } from '@material-ui/core';
 
 import * as urls from '../urls';
-// import reducer from '../reducers';
+import reducer from '../reducers';
 import LoginPage from './LoginPage';
 import Layout from './Layout';
 
-// const composeEnhancers = global.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancers = global.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-// const store = createStore(reducer, composeEnhancers(applyMiddleware(reduxThunk)));
+const store = createStore(reducer, composeEnhancers(applyMiddleware(reduxThunk)));
 
 const styles = {
     self: {
@@ -32,9 +32,9 @@ class App extends Component {
     };
 
     render() {
-        // const { classes } = this.props;
+        const { classes } = this.props;
         return (
-            // <Provider store={store}>
+            <Provider store={store}>
                 <BrowserRouter>
                     <CssBaseline>
                         <div style={styles.self}>
