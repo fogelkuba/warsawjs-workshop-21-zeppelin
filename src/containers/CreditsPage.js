@@ -1,9 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { withStyles } from '@material-ui/core';
 
-import { arrayofProjects } from '../propTypes';
+import { withStyles } from '@material-ui/core';
 
 const styles = {
     self: {
